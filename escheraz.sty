@@ -1,0 +1,94 @@
+\ProvidesPackage{escheraz}[2020/09/20] % Derivative of Lindrew Template
+
+%=============================STANDARD PACKAGES=============================
+\usepackage{amsmath, amssymb, amsthm} % standard
+\usepackage[svgnames, dvipsnames, usenames]{xcolor}
+\usepackage{graphicx} % for putting pictures
+\usepackage[T1]{fontenc} % for accents, etc.
+\usepackage{tikz, tikz-cd, pgfplots} % for drawing pictures
+\pgfplotsset{compat=1.16}
+%==============================TEXT FORMATTING==============================
+\usepackage[left=2cm, top=1.6cm, bottom=2.4cm, right=2cm]{geometry}
+\usepackage[nodisplayskipstretch, onehalfspacing]{setspace} % 1.5 spacing
+\usepackage{cmbright}
+\usepackage{titlesec}
+\titleformat{\subsection}{\large\bfseries\sffamily}{\thesubsection}{0.4cm}{} 
+\renewcommand{\emph}[1]{\textbf{\color{blue} #1}}
+\setlength{\parindent}{0pt}
+
+%Apparently fixes itemize, from Lindrew, who got this from Jason
+\usepackage{enumitem}
+\setlist{noitemsep, topsep = 0.4em}
+\renewcommand\labelitemi{\raisebox{0.15em}{\tiny$\bullet$}}
+
+%==============================NEW OPERATIONS===============================
+\DeclareMathOperator{\cis}{cis}
+\DeclareMathOperator{\sign}{sgn}
+\renewcommand{\Re}{\operatorname{Re}} 
+\renewcommand{\Im}{\operatorname{Im}}
+\renewcommand{\mod}[1]{\ \text{mod}\ #1}
+\newcommand{\cbrt}[1]{\sqrt[3]{#1}}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceiling}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\ol}{\overline}
+\newcommand{\ul}{\underline}
+\newenvironment{subproof}[1][Proof]{\begin{proof}[#1]}{\end{proof}}
+
+%===============================THEOREM BOXES===============================
+\usepackage{thmtools}
+\usepackage[framemethod = TikZ]{mdframed}
+
+\mdfsetup{linewidth = 0.3mm, innertopmargin = 2mm, innerbottommargin = 2mm, innerleftmargin = 3mm, innerrightmargin = 3mm, skipbelow=-0.2cm} 
+
+\newcommand{\thmboxstyle}[4]{
+	\mdfdefinestyle{#2}{linecolor = #3, backgroundcolor = #4, nobreak = true}
+	\declaretheoremstyle[headfont = \sffamily\bfseries\color{#3}, mdframed = {style = #2}, headpunct = {\\[0.4pt]}, postheadspace = {0pt}]{#1}
+}
+
+%box colors
+\thmboxstyle{claimbox}{mdgraybox}{Black}{Gray!20}
+\thmboxstyle{exbox}{mdredbox}{Purple}{Red!08}
+\thmboxstyle{lemmabox}{mdgreenbox}{OliveGreen!40!JungleGreen}{Emerald!8}
+\thmboxstyle{thmbox}{mdbluebox}{NavyBlue!60!ProcessBlue}{ProcessBlue!10}
+\thmboxstyle{corollarybox}{mdyellowbox}{Goldenrod!40!Dandelion}{BurntOrange!5}
+\thmboxstyle{defbox}{mdpinkbox}{Lavender!40!Magenta}{Rhodamine!8}
+\thmboxstyle{notebox}{mdorangebox}{Orange!50!Brown}{Yellow!5!Olive!5}
+
+%possible environments
+\declaretheorem[style = thmbox, name = Theorem, numberwithin = section]{theorem}
+\declaretheorem[style = thmbox, name = Theorem, numbered = no]{theorem*}
+
+\declaretheorem[style = lemmabox, name = Lemma, sibling = theorem]{lemma}
+\declaretheorem[style = lemmabox, name = Lemma, numbered = no]{lemma*}
+
+\declaretheorem[style = corollarybox, name = Corollary, sibling = theorem]{corollary}
+\declaretheorem[style = corollarybox, name = Corollary, numbered = no]{corollary*}
+
+\declaretheorem[style = claimbox, name = Conjecture, sibling = theorem]{conjecture}
+\declaretheorem[style = claimbox, name = Conjecture, numbered = no]{conjecture*}
+
+\declaretheorem[style = defbox, name = Definition, sibling = theorem]{definition}
+\declaretheorem[style = defbox, name = Definition, numbered = no]{definition*}
+
+\declaretheorem[style = exbox, name = Example, sibling = theorem]{example}
+\declaretheorem[style = exbox, name = Example, numbered = no]{example*}
+
+\declaretheorem[style = claimbox, name = Claim, sibling = theorem]{claim}
+\declaretheorem[style = claimbox, name = Claim, numbered = no]{claim*}
+
+\declaretheorem[style = notebox, name = Note, sibling = theorem]{note}
+\declaretheorem[style = notebox, name = Note, numbered = no]{note*}
+
+\declaretheorem[style = plain, name = Question, sibling = theorem]{question}
+\declaretheorem[style = plain, name = Question, numbered = no]{question*}
+
+\declaretheorem[style = corollarybox, name = Problem, sibling = theorem]{problem}
+\declaretheorem[style = corollarybox, name = Problem, numbered = no]{problem*}
+
+
+\declaretheorem[style = plain, name = Joke, sibling = theorem]{joke}
+\declaretheorem[style = plain, name = Joke, numbered = no]{joke*}
+
+\declaretheorem[style = plain, name = Remark, sibling = theorem]{remark}
+\declaretheorem[style = plain, name = Remark, numbered = no]{remark*}
+
